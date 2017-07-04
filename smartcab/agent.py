@@ -57,7 +57,7 @@ class LearningAgent(Agent):
             inputs['oncoming'],
             inputs['left'],
             inputs['right'],
-            deadline
+            #deadline #the source of all my problems
         )
 
         return state
@@ -121,7 +121,7 @@ class LearningAgent(Agent):
         scaled_reward = self.alpha * reward
 
         if self.learning:
-            self.Q[state][action] = scaled_q + scaled_reward
+            self.Q[state][action] = old_q + (scaled_reward - scaled_q)
         return
 
 
